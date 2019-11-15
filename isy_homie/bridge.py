@@ -13,6 +13,7 @@ from .devices.dimmer import Dimmer
 from .devices.fan import Fan
 from .devices.contact import Contact 
 from .devices.controller_action import Controller_Action 
+from .devices.lock import Lock
 from .devices.scene import Scene
 from .devices.variable import Variable
 from .devices.program import Program
@@ -78,6 +79,8 @@ class Bridge (object):
                 contact = Contact (device,self.homie_settings,self.mqtt_settings)
             elif device.device_type == 'controller':
                 controller = Controller_Action (device,self.homie_settings,self.mqtt_settings)
+            elif device.device_type == 'lock':
+                lock = Lock (device,self.homie_settings,self.mqtt_settings)
 
     def _scene_event_handler(self,device,event,*args):
         #print ('device event',device.name,event)
